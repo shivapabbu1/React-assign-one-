@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import FunComp from './Component/FunComp';
+import ClassComp from './Component/Class';
+import { useState} from 'react';
 function App() {
+  const [show,showstate]=useState(false)
+  const Change=()=>{
+    showstate(!show)
+  };
+  const[showmore,morestate]=useState(false)
+  const Handle=()=>{
+   morestate(!showmore)
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className='Container'>
+      <h1 > Styling components in React </h1>
+      <div className="Box">
+      <button  className="Btn" onClick={Change}>Click me to see the styling of functional components</button>
+     
+      <button  className="Btn" onClick={Handle} >Click me to see the styling of class components</button>
+      <hr></hr>
+      <div className='NewDiv'>{show && <FunComp/>} 
+                          {showmore && <ClassComp/>}
+      </div>
+</div>
+</div>
+  
   );
 }
 
